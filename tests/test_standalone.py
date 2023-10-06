@@ -63,3 +63,15 @@ def test_critics_consensus(happy_gilmore_content):
     assert standalone.critics_consensus("happy gilmore", happy_gilmore_content) == \
         "Those who enjoy Adam Sandler's schtick will find plenty to love in this gleefully juvenile take on professional golf; "+\
         "those who don't, however, will find it unfunny and forgettable."
+    
+def test_critic_raview_count(top_gun_mav_content):
+    assert standalone.critic_review_count("top gun", top_gun_mav_content) == 478
+    
+def test_audience_rating_count(top_gun_mav_content):
+    assert standalone.audience_rating_count("top gun", top_gun_mav_content) == 63747
+
+def test_tomatometer_state(top_gun_mav_content):
+    assert standalone.tomatometer_state("top gun maverick", top_gun_mav_content) == "certified-fresh"
+
+def test_audience_state(top_gun_mav_content):
+    assert standalone.audience_state("top gun maverick", top_gun_mav_content) == "upright"

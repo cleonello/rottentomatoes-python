@@ -29,6 +29,10 @@ class Movie:
         self.image = standalone.image(self.movie_title, content=content)
         self.url = standalone.url(self.movie_title, content=content)
         self.critics_consensus = standalone.critics_consensus(self.movie_title, content=content)
+        self.critic_review_count = standalone.critic_review_count(self.movie_title, content=content)
+        self.audience_rating_count = standalone.audience_rating_count(self.movie_title, content=content)
+        self.tomatometer_state = standalone.tomatometer_state(self.movie_title, content=content)
+        self.audience_state = standalone.audience_state(self.movie_title, content=content)
 
     def __str__(self) -> str:
         return f"{self.movie_title.title()}, {self.rating}, {self.duration}.\n" \

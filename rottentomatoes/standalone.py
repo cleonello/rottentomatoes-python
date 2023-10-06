@@ -287,3 +287,85 @@ def critics_consensus(movie_name: str, content: str = None) -> str:
         content = _request(movie_name)
     return _extract(content,'<span data-qa="critics-consensus">','</span>')
 
+
+def critic_review_count(movie_name: str, content: str = None) -> int:
+    """Returns an integer of the number of critic reviews for `movie_name`. 
+
+    Args:
+        movie_name (str): Title of the movie. Case insensitive.
+
+    Raises:
+        LookupError: If the movie isn't found on Rotten Tomatoes.
+        This could be due to a typo in entering the movie's name,
+        duplicates, or other issues.
+
+    Returns:
+        int: Number of critic reviews of `movie_name`.
+    """
+    if content is None:
+        content = _request(movie_name)
+
+    return _get_score_details(content)['scoreboard']['tomatometerScore']["reviewCount"]
+
+
+def audience_rating_count(movie_name: str, content: str = None) -> int:
+    """Returns an integer of the number of audience ratings for `movie_name`. 
+
+    Args:
+        movie_name (str): Title of the movie. Case insensitive.
+
+    Raises:
+        LookupError: If the movie isn't found on Rotten Tomatoes.
+        This could be due to a typo in entering the movie's name,
+        duplicates, or other issues.
+
+    Returns:
+        int: Number of critic ratings of `movie_name`.
+    """
+    if content is None:
+        content = _request(movie_name)
+
+    return _get_score_details(content)['scoreboard']['audienceScore']["ratingCount"]
+
+
+def tomatometer_state(movie_name: str, content: str = None) -> str:
+    """Returns a string indicating the critic rating state 
+    (rotten, fresh, certified-fresh) of `movie_name`. 
+
+    Args:
+        movie_name (str): Title of the movie. Case insensitive.
+
+    Raises:
+        LookupError: If the movie isn't found on Rotten Tomatoes.
+        This could be due to a typo in entering the movie's name,
+        duplicates, or other issues.
+
+    Returns:
+        str: State of the critic rating of `movie_name`.
+    """
+    if content is None:
+        content = _request(movie_name)
+
+    return _get_score_details(content)['scoreboard']['tomatometerScore']["state"]
+
+
+def audience_state(movie_name: str, content: str = None) -> str:
+    """Returns a string indicating the audience rating state 
+    (spilled, upright) of `movie_name`. 
+
+    Args:
+        movie_name (str): Title of the movie. Case insensitive.
+
+    Raises:
+        LookupError: If the movie isn't found on Rotten Tomatoes.
+        This could be due to a typo in entering the movie's name,
+        duplicates, or other issues.
+
+    Returns:
+        str: Sate of the audience rating of `movie_name`.
+    """
+    if content is None:
+        content = _request(movie_name)
+
+    return _get_score_details(content)['scoreboard']['audienceScore']["state"]
+
