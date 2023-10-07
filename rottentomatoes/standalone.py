@@ -349,7 +349,7 @@ def tomatometer_state(movie_name: str, content: str = None) -> str:
     return _get_score_details(content)['scoreboard']['tomatometerScore']["state"]
 
 
-def audience_state(movie_name: str, content: str = None) -> str:
+def popcorn_state(movie_name: str, content: str = None) -> str:
     """Returns a string indicating the audience rating state 
     (spilled, upright) of `movie_name`. 
 
